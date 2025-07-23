@@ -35,7 +35,10 @@ class SlashForcer implements MiddlewareInterface
         }
 
         $uri = $request->getUri();
-        if (str_ends_with($uri->getPath(), '/')) {
+
+        if (str_ends_with($uri->getPath(), '/')
+            || str_ends_with($uri->getPath(), 'index.php')
+        ) {
             return $handler->handle($request);
         }
 
